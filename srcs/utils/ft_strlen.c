@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 10:45:38 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/08 11:26:51 by adelille         ###   ########.fr       */
+/*   Created: 2021/12/08 11:37:10 by adelille          #+#    #+#             */
+/*   Updated: 2021/12/08 11:38:56 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/hotrace.h"
+#include "../../includes/hotrace.h"
 
-int	main(void)
+size_t	ft_strlen(const char *str)
 {
-	return (0);
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

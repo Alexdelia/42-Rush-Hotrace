@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 10:45:38 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/08 11:26:51 by adelille         ###   ########.fr       */
+/*   Created: 2021/03/23 21:09:30 by adelille          #+#    #+#             */
+/*   Updated: 2021/12/08 11:36:26 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/hotrace.h"
+#include "../../includes/hotrace.h"
 
-int	main(void)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i])
+	{
+		if (!(s1[i] == s2[i]))
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (s1[i] - s2[i]);
 }

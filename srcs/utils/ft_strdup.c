@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 10:45:38 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/08 11:26:51 by adelille         ###   ########.fr       */
+/*   Created: 2020/10/27 16:46:28 by adelille          #+#    #+#             */
+/*   Updated: 2021/12/08 11:37:00 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/hotrace.h"
+#include "../../includes/hotrace.h"
 
-int	main(void)
+char	*ft_strdup(const char *s)
 {
-	return (0);
+	char	*str;
+	size_t	i;
+
+	str = (char *)malloc(sizeof(*s) * (ft_strlen(s) + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
