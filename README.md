@@ -1,2 +1,2 @@
 # 42-Rush-Hotrace
-42 rush about speed reading and hashing
+Ce rush est un concours de rapidité pour vous faire réfléchir sur des algorithmes et techniques de programmation efficaces.
