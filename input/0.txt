@@ -1,0 +1,13 @@
+hi
+hello
+bye
+good bye
+it's nice outside
+it's raining
+
+hi
+bye
+it's nice outside
+hi
+hello
+no

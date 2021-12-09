@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 16:46:28 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 18:19:15 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:53:01 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strdup_hotrace(size_t base, const size_t size)
 	char	*str;
 	size_t	i;
 
-	str = (char *)malloc(sizeof(char) * (size - base + 1));
+	str = (char *)malloc(sizeof(char) * (size - base + 2));
 	if (!str)
 		return (NULL);
 	i = 0;

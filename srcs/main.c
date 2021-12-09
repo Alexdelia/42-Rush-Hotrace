@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:45:38 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 18:48:59 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:27:40 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	main(void)
 	if (!g_d.tab)
 		return (ft_pser("Error: Malloc failed\n") + 1);
 	if (!read_stdin())
-		return (1);
+		return (clear(1));
 	if (!parse())
-		return (2);
+		return (clear(2));
 	process();
-	return (0);
+	return (clear(0));
 }
