@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_pser.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 10:45:38 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 16:14:16 by adelille         ###   ########.fr       */
+/*   Created: 2021/12/09 16:02:03 by adelille          #+#    #+#             */
+/*   Updated: 2021/12/09 16:03:45 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/hotrace.h"
+#include "../../includes/hotrace.h"
 
-t_data	d;
-
-int	main(void)
+bool	ft_pser(const char *str)
 {
-	size_t	i;
-
-	d.tab = (t_item *)malloc(sizeof(t_item) * TABLE_SIZE);
-	if (!d.tab)
-		return (1);
-	i = parse();
-	if (i == 0)
-		return (1);
-	process(/*i*/);
-	return (0);
+	write(2, str, ft_strlen(str));
+	return (false);
 }

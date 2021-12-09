@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strdup_n.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 16:46:28 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/08 11:37:00 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 16:04:32 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/hotrace.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup_n(const char *s, const size_t size)
 {
 	char	*str;
 	size_t	i;
 
-	str = (char *)malloc(sizeof(*s) * (ft_strlen(s) + 1));
+	str = (char *)malloc(sizeof(*s) * (size + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
