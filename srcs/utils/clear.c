@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 22:26:28 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 22:58:14 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 23:02:55 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	clear_chain(t_item *head)
 }
 
 // clear take awful time
-int	clear(int ret)
+/*int	clear(int ret)
 {
 	size_t	i;
 
@@ -47,4 +47,15 @@ int	clear(int ret)
 	}
 	free(g_d.tab);
 	return (ret);
+}*/
+
+int	clear(int ret)
+{
+	size_t	hash;
+
+	g_d.i = 0;
+	while (g_d.stdin[g_d.i] && g_d.stdin[g_d.i] != '\n')
+	{
+		g_d.i++;
+	}
 }
