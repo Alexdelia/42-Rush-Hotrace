@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:45:38 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 16:53:04 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:48:59 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 		return (ft_pser("Error: Malloc failed\n") + 1);
 	if (!read_stdin())
 		return (1);
-	if (!parse())	
+	if (!parse())
 		return (2);
 	process();
 	return (0);

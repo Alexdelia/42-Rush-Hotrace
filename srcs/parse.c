@@ -6,38 +6,85 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:37:12 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 16:50:23 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:48:32 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/hotrace.h"
 
-// check format: keyword\nvalue\n
-// store in t_item with len
-// when \n\n, return index or address_index of buffer
+static bool	insert(t_item *tmp, char *keyword, char *value, t_len *l)
+{
+	while (tmp && tmp->value)
+	{
+		if (ft_strcmp(tmp->keyword, keyword) == 0)
+		{
+			free(tmp->value);
+			free(keyword);
+			tmp->value = value;
+			tmp->val_len = l->val_len;
+			return (true);
+		}
+		else if (!tmp->next)
+		{
+			tmp->next = new_item(keyword, l->key_len, value, l->val_len);
+			if (!tmp->next)
+			{
+				free(keyword);
+				free(value);
+				return (ft_pser("Error: Malloc failed\n"));
+			}
+			return (true);
+		}
+		tmp = tmp->next;
+	}
+	return (true);
+}
 
-// start process // will hash somewhere
+static bool	add_item(size_t base, t_len *l)
+{
+	t_item	*tmp;
+	size_t	hash;
+	char	*keyword;
+	char	*value;
 
-// will expect to have good input
-Bool	parse(void)
+	keyword = ft_strdup_hotrace(base, l->key_len);
+	value = ft_strdup_hotrace(l->key_len + 1, l->val_len);
+	if (!keyword | !value)
+		return (ft_pser("Error: Malloc failed\n"));
+	hash = get_hash(keyword);
+	if (!g_d.tab[hash].value)
+	{
+		g_d.tab[hash].keyword = keyword;
+		g_d.tab[hash].value = value;
+		g_d.tab[hash].key_len = l->key_len;
+		g_d.tab[hash].val_len = l->val_len;
+	}
+	else
+	{
+		tmp = &g_d.tab[hash];
+		return (insert(tmp, keyword, value, l));
+	}
+	return (true);
+}
+
+bool	parse(void)
 {
 	size_t	base;
-	size_t	key_len;
-	size_t	val_len;
+	t_len	l;
 
 	g_d.i = 0;
 	while (g_d.stdin[g_d.i] && g_d.stdin[g_d.i] != '\n')
 	{
 		base = g_d.i;
-		key_len = g_d.i;
-		while (g_d.stdin[key_len] && g_d.stdin[key_len] != '\n')
-			key_len++;
-		val_len = key_len + 1;
-		while (g_d.stdin[val_len] && g_d.stdin[val_len] != '\n')
-			val_len++;
-		if (!add_item(base, key_len, val_len))
+		l.key_len = g_d.i;
+		while (g_d.stdin[l.key_len] && g_d.stdin[l.key_len] != '\n')
+			l.key_len++;
+		l.val_len = l.key_len + 1;
+		while (g_d.stdin[l.val_len] && g_d.stdin[l.val_len] != '\n')
+			l.val_len++;
+		if (!add_item(base, &l))
 			return (false);
-		g_d.i = val_len + 1;
+		g_d.i = l.val_len + 1;
 	}
 	g_d.i++; // jumping over second \n
 	return (true);
