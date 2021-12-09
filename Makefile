@@ -6,7 +6,7 @@
 #    By: adelille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/15 15:56:29 by adelille          #+#    #+#              #
-#    Updated: 2021/12/08 10:45:30 by adelille         ###   ########.fr        #
+#    Updated: 2021/12/09 19:15:31 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,19 +23,27 @@ CFLAGS	=	-Wall -Werror -Wextra
 
 #MAKEFLAGS += --silent
 
-SRCS =		$(wildcard *.c)
-OBJS =		$(SRCS:.c=.o)
+SRCSPATH =	./srcs/
+OBJSPATH =	./objs/
+INC =		./includes/
+
+SRCS =		$(wildcard $(SRCSPATH)*.c) $(wildcard $(SRCSPATH)**/*.c)
+SRCSNAME =	$(subst $(SRCSPATH), , $(SRCS))
+
+OBJSNAME =	$(SRCSNAME:.c=.o)
+OBJS =		$(addprefix $(OBJSPATH), $(OBJSNAME))
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+$(OBJSPATH)%.o: $(SRCSPATH)%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJSPATH)
 
 fclean:		clean
 	$(RM) $(NAME)

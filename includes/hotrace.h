@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:52:50 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 18:38:37 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:08:31 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,12 @@ typedef struct s_double_len
 extern t_data	g_d;
 
 bool	read_stdin(void);
-
 bool	parse(void);
-size_t	get_hash(const char *tag);
+void	process(void);
+void	print(const char *line, const size_t size,
+		const char *value, const size_t val_len);
 
-// will get len in read
+size_t	get_hash(const char *tag);
 t_item	*new_item(char *keyword, size_t key_len, char *value, size_t val_len);
 
 size_t	ft_strlen(const char *str);
