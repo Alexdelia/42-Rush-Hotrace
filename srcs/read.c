@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:51:51 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 16:31:22 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 16:36:44 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static bool	read_big_stdin(ssize_t size)
 	buffer[ret] = '\0';
 	while (ret != 0 && ret != EOF)
 	{
-		d.stdin = ft_strjoin_hotrace(d.stdin, size, buffer, BUFFER_SIZE);
-		if (!d.stdin)
+		g_d.stdin = ft_strjoin_hotrace(g_d.stdin, size, buffer, BUFFER_SIZE);
+		if (!g_d.stdin)
 			return (ft_pser("Error: Malloc failed\n"));
 		size += ret;
 		ret = read(0, buffer, BUFFER_SIZE);
@@ -39,11 +39,11 @@ bool	read_stdin(void)
 {
 	ssize_t		ret;
 
-	d.stdin = (char *)malloc(sizeof(char) * BUFFER_INIT + 1);
-	if (!d.stdin)
+	g_d.stdin = (char *)malloc(sizeof(char) * BUFFER_INIT + 1);
+	if (!g_d.stdin)
 		return (ft_pser("Error: Malloc failed\n"));
-	ret = read(0, d.stdin, BUFFER_INIT);
-	d.stdin[ret] = '\0';
+	ret = read(0, g_d.stdin, BUFFER_INIT);
+	g_d.stdin[ret] = '\0';
 	if (ret != 0 && ret != EOF)
 		if (!read_big_stdin(ret))
 			return (false);

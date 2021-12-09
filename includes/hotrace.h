@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:52:50 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 16:31:44 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 16:38:29 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,10 @@ typedef struct	s_data
 {
 	t_item	*tab;
 	char	*stdin;
+	size_t	i;
 }			t_data;
 
-extern t_data	d;
+extern t_data	g_d;
 
 bool	read_stdin(void);
 
