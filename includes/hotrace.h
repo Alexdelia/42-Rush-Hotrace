@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:52:50 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 16:38:29 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/09 16:53:19 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #  define TABLE_SIZE	100000000
 # endif
 
-typedef struct	s_item
+typedef struct s_item
 {
 	char			*keyword;
 	char			*value;
@@ -37,7 +37,7 @@ typedef struct	s_item
 	struct s_item	*next;
 }				t_item;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_item	*tab;
 	char	*stdin;
