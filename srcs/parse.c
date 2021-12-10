@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:37:12 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/10 13:30:17 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/10 14:26:18 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ bool	parse(void)
 			return (false);
 		g_d.i = l.val_len + 1;
 	}
-	g_d.i++; // jumping over second \n
+	g_d.i++;
 	return (true);
 }
