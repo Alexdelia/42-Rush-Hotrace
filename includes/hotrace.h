@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:52:50 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 22:42:21 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/10 10:30:25 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ size_t	get_hash(const char *tag);
 t_item	*new_item(char *keyword, size_t key_len, char *value, size_t val_len);
 int		clear(int ret);
 
-size_t	ft_strlen(const char *str);
+//size_t	ft_strlen(const char *str);
 char	*ft_strdup_hotrace(size_t base, const size_t size);
 char	*ft_strjoin_hotrace(char *s1, const size_t size1,
 			char *s2, const size_t size2);
