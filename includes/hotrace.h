@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:52:50 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/10 11:21:33 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/10 14:22:58 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ bool	read_stdin(void);
 bool	parse(void);
 void	process(void);
 void	print(const char *line, const size_t size,
-		const char *value, const size_t val_len);
+			const char *value, const size_t val_len);
 
 size_t	get_hash(const char *tag);
 t_hl	*new_hash(size_t hash);
@@ -75,7 +75,7 @@ int		clear(int ret);
 
 char	*ft_strdup_hotrace(size_t base, const size_t size);
 char	*ft_strjoin_hotrace(char *s1, const size_t size1,
-		char *s2, const size_t size2);
+			char *s2, const size_t size2);
 int		ft_strcmp(const char *s1, const char *s2);
 bool	ft_pser(const char *str);
 
