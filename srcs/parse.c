@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:37:12 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 18:48:32 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/10 13:30:17 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	insert(t_item *tmp, char *keyword, char *value, t_len *l)
 			free(tmp->value);
 			free(keyword);
 			tmp->value = value;
-			tmp->val_len = l->val_len;
+			tmp->val_len = l->val_len - (l->key_len + 1);
 			return (true);
 		}
 		else if (!tmp->next)
@@ -56,8 +56,9 @@ static bool	add_item(size_t base, t_len *l)
 	{
 		g_d.tab[hash].keyword = keyword;
 		g_d.tab[hash].value = value;
-		g_d.tab[hash].key_len = l->key_len;
-		g_d.tab[hash].val_len = l->val_len;
+		g_d.tab[hash].key_len = l->key_len - base;
+		g_d.tab[hash].val_len = l->val_len - (l->key_len + 1);
+		add_back_hash(&g_d.hl, new_hash(hash));
 	}
 	else
 	{
@@ -72,6 +73,7 @@ bool	parse(void)
 	size_t	base;
 	t_len	l;
 
+	g_d.hl = NULL;
 	g_d.i = 0;
 	while (g_d.stdin[g_d.i] && g_d.stdin[g_d.i] != '\n')
 	{

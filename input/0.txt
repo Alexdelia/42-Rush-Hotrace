@@ -4,10 +4,13 @@ bye
 good bye
 it's nice outside
 it's raining
+0123456789
+-1234
 
 hi
 bye
 it's nice outside
+0123456789
 hi
 hello
 no
