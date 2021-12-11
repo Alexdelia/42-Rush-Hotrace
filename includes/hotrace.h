@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:52:50 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 17:46:59 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:29:51 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ typedef struct s_data
 {
 	t_item	*tab;
 	t_hl	*hl;
-	//char	*stdin;
-	//size_t	i;
 }			t_data;
 
 typedef struct s_double_len
@@ -62,7 +60,6 @@ typedef struct s_double_len
 extern t_data	g_d;
 
 char	*gnl(size_t *size);
-//bool	read_stdin(void);
 bool	parse(void);
 bool	search(void);
 void	print(const char *line, const size_t size,
@@ -74,13 +71,9 @@ void	add_back_hash(t_hl **alst, t_hl *new);
 t_item	*new_item(char *keyword, size_t key_len, char *value, size_t val_len);
 int		clear(int ret);
 
-size_t	ft_strcpy_n(char *dst, const char *src, const size_t size);
 char	*ft_strdup_n(const char *src, const size_t size);
-//char	*ft_strdup_hotrace(size_t base, const size_t size);
 char	*ft_strjoin_n_free(char *s1, size_t *size1,
 			const char *s2, const size_t size2);
-//char	*ft_strjoin_hotrace(char *s1, const size_t size1,
-//			char *s2, const size_t size2);
 int		ft_strcmp(const char *s1, const char *s2);
 bool	ft_pser(const char *str);
 

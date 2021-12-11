@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:37:12 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 17:48:18 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:28:50 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	insert(t_item *tmp, char *keyword, char *value, t_len *l)
 			{
 				free(keyword);
 				free(value);
-				return (ft_pser("Error: Malloc failed3\n"));
+				return (ft_pser("Error: Malloc failed\n"));
 			}
 			return (true);
 		}
@@ -59,7 +59,6 @@ static bool	add_item(char *keyword, char *value, t_len *l)
 		tmp = &g_d.tab[hash];
 		return (insert(tmp, keyword, value, l));
 	}
-	//might need to free keyword and value
 	return (true);
 }
 
@@ -72,17 +71,17 @@ bool	parse(void)
 	g_d.hl = NULL;
 	keyword = gnl(&l.key_len);
 	if (!keyword)
-		return (ft_pser("Error: Malloc failed2\n"));
+		return (ft_pser("Error: Malloc failed\n"));
 	while (keyword[0] != '\0')
 	{
 		value = gnl(&l.val_len);
 		if (!value)
-			return (ft_pser("Error: Malloc failed1\n"));
+			return (ft_pser("Error: Malloc failed\n"));
 		if (!add_item(keyword, value, &l))
 			return (false);
 		keyword = gnl(&l.key_len);
 		if (!keyword)
-			return (ft_pser("Error: Malloc failed0\n"));	
+			return (ft_pser("Error: Malloc failed\n"));
 	}
 	free(keyword);
 	return (true);

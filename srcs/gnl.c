@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:32:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 18:24:45 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:29:08 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ char	*gnl(size_t *size)
 			line = ft_strjoin_n_free(line, size, &buffer[index], n);
 			if (!line)
 				return (NULL);
-			index += n + 1;	
-			//ft_strcpy_n(buffer, &buffer[n + 1], BUFFER_SIZE);
+			index += n + 1;
 			return (line);
 		}
 		else
