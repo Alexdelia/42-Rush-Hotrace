@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:52:50 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 22:09:00 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:15:08 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	print(const char *line, const size_t size,
 
 size_t	get_hash(const char *tag);
 t_hl	*new_hash(size_t hash);
-//void	add_back_hash(t_hl **alst, t_hl *new);
 t_item	*new_item(char *keyword, size_t key_len, char *value, size_t val_len);
 int		clear(int ret);
 

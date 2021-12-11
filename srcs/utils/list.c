@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:46:02 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/10 11:21:51 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:14:46 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,4 @@ t_hl	*new_hash(size_t hash)
 	new->hash = hash;
 	new->next = NULL;
 	return (new);
-}
-
-static t_hl	*last_hash(t_hl *lst)
-{
-	while (lst)
-	{
-		if (!lst->next)
-			return (lst);
-		lst = lst->next;
-	}
-	return (lst);
-}
-
-void	add_back_hash(t_hl **alst, t_hl *new)
-{
-	t_hl	*last;
-
-	if (alst)
-	{
-		if (*alst)
-		{
-			last = last_hash(*alst);
-			last->next = new;
-		}
-		else
-			*alst = new;
-	}
 }
