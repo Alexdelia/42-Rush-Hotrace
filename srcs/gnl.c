@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:32:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 18:16:20 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:24:45 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ long	ft_n(const char *str)
 
 char	*gnl(size_t *size)
 {
-	static char	*buffer = NULL;
-	char		*line;
-	long		n;
-	size_t		res;
+	static char		*buffer = NULL;
+	static size_t	index = 0;
+	char			*line;
+	long			n;
+	size_t			res;
 
 	if (BUFFER_SIZE <= 0)
 		return (NULL);
@@ -49,21 +50,23 @@ char	*gnl(size_t *size)
 		res = read(0, buffer, BUFFER_SIZE);
 	while (res > 0)
 	{
-		n = ft_n(buffer);
+		n = ft_n(&buffer[index]);
 		if (n > -1)
 		{
-			line = ft_strjoin_n_free(line, size, buffer, n);
+			line = ft_strjoin_n_free(line, size, &buffer[index], n);
 			if (!line)
 				return (NULL);
-			ft_strcpy_n(buffer, &buffer[n + 1], BUFFER_SIZE);
+			index += n + 1;	
+			//ft_strcpy_n(buffer, &buffer[n + 1], BUFFER_SIZE);
 			return (line);
 		}
 		else
 		{
-			line = ft_strjoin_n_free(line, size, buffer, BUFFER_SIZE);
+			line = ft_strjoin_n_free(line, size, &buffer[index], BUFFER_SIZE);
 			if (!line)
 				return (NULL);
 			res = read(0, buffer, BUFFER_SIZE);
+			index = 0;
 		}
 	}
 	free(buffer);
