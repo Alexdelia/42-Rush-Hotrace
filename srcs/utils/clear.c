@@ -6,27 +6,25 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 22:26:28 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/10 12:05:17 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 13:56:14 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/hotrace.h"
 
-static void	clear_chain(t_item *head)
+static void	clear_chain(t_item *current)
 {
 	t_item	*tmp;
 
-	while (head && head->next)
+	while (current && current->next)
 	{
-		tmp = head->next;
-		while (tmp && tmp->next)
-			tmp = tmp->next;
+		tmp = current;
+		current = current->next;
 		free(tmp->keyword);
 		free(tmp->value);
-		free(tmp);
 	}
-	free(head->keyword);
-	free(head->value);
+	free(current->keyword);
+	free(current->value);
 }
 
 // clear take awful time

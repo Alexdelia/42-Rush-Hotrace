@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:02:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/10 10:31:40 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 14:08:27 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ static size_t	ft_strlen(const char *str)
 
 bool	ft_pser(const char *str)
 {
-	write(2, str, ft_strlen(str));
+	(void)!write(2, str, ft_strlen(str));
 	return (false);
 }

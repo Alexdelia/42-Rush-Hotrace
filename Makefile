@@ -6,20 +6,22 @@
 #    By: adelille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/15 15:56:29 by adelille          #+#    #+#              #
-#    Updated: 2021/12/09 22:48:24 by adelille         ###   ########.fr        #
+#    Updated: 2021/12/11 14:13:51 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	hotrace
-CC = 	clang
+CC = 	cc
 RM = 	rm -rf
 
 CFLAGS	=	-Wall -Werror -Wextra
 #CFLAGS	+=	-O2
 #CFLAGS	+=	-O3
-#CFLAGS	+=	-Ofast
-CFLAGS	+=	-g3
+CFLAGS	+=	-Ofast
+#CFLAGS	+=	-g3
 #CFLAGS	+=	-fsanitize=address
+
+#CFLAGS	+=	-DBUFFER_SIZE=1000000000
 
 #MAKEFLAGS += --silent
 
