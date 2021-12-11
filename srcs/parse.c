@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:37:12 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/10 14:26:18 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:48:18 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	insert(t_item *tmp, char *keyword, char *value, t_len *l)
 			free(tmp->value);
 			free(keyword);
 			tmp->value = value;
-			tmp->val_len = l->val_len - (l->key_len + 1);
+			tmp->val_len = l->val_len;
 			return (true);
 		}
 		else if (!tmp->next)
@@ -31,7 +31,7 @@ static bool	insert(t_item *tmp, char *keyword, char *value, t_len *l)
 			{
 				free(keyword);
 				free(value);
-				return (ft_pser("Error: Malloc failed\n"));
+				return (ft_pser("Error: Malloc failed3\n"));
 			}
 			return (true);
 		}
@@ -40,24 +40,18 @@ static bool	insert(t_item *tmp, char *keyword, char *value, t_len *l)
 	return (true);
 }
 
-static bool	add_item(size_t base, t_len *l)
+static bool	add_item(char *keyword, char *value, t_len *l)
 {
 	t_item	*tmp;
 	size_t	hash;
-	char	*keyword;
-	char	*value;
 
-	keyword = ft_strdup_hotrace(base, l->key_len);
-	value = ft_strdup_hotrace(l->key_len + 1, l->val_len);
-	if (!keyword | !value)
-		return (ft_pser("Error: Malloc failed\n"));
 	hash = get_hash(keyword);
 	if (!g_d.tab[hash].value)
 	{
 		g_d.tab[hash].keyword = keyword;
 		g_d.tab[hash].value = value;
-		g_d.tab[hash].key_len = l->key_len - base;
-		g_d.tab[hash].val_len = l->val_len - (l->key_len + 1);
+		g_d.tab[hash].key_len = l->key_len;
+		g_d.tab[hash].val_len = l->val_len;
 		add_back_hash(&g_d.hl, new_hash(hash));
 	}
 	else
@@ -65,29 +59,31 @@ static bool	add_item(size_t base, t_len *l)
 		tmp = &g_d.tab[hash];
 		return (insert(tmp, keyword, value, l));
 	}
+	//might need to free keyword and value
 	return (true);
 }
 
 bool	parse(void)
 {
-	size_t	base;
+	char	*keyword;
+	char	*value;
 	t_len	l;
 
 	g_d.hl = NULL;
-	g_d.i = 0;
-	while (g_d.stdin[g_d.i] && g_d.stdin[g_d.i] != '\n')
+	keyword = gnl(&l.key_len);
+	if (!keyword)
+		return (ft_pser("Error: Malloc failed2\n"));
+	while (keyword[0] != '\0')
 	{
-		base = g_d.i;
-		l.key_len = g_d.i;
-		while (g_d.stdin[l.key_len] && g_d.stdin[l.key_len] != '\n')
-			l.key_len++;
-		l.val_len = l.key_len + 1;
-		while (g_d.stdin[l.val_len] && g_d.stdin[l.val_len] != '\n')
-			l.val_len++;
-		if (!add_item(base, &l))
+		value = gnl(&l.val_len);
+		if (!value)
+			return (ft_pser("Error: Malloc failed1\n"));
+		if (!add_item(keyword, value, &l))
 			return (false);
-		g_d.i = l.val_len + 1;
+		keyword = gnl(&l.key_len);
+		if (!keyword)
+			return (ft_pser("Error: Malloc failed0\n"));	
 	}
-	g_d.i++;
+	free(keyword);
 	return (true);
 }
