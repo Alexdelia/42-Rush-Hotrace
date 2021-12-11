@@ -6,11 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:32:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 17:42:20 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:16:20 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/hotrace.h"
+#include "../includes/hotrace.h"
 
 long	ft_n(const char *str)
 {
