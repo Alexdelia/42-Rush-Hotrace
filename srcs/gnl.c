@@ -6,15 +6,15 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:32:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 19:01:05 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 20:51:57 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/hotrace.h"
 
-long	ft_n(const char *str)
+ssize_t	ft_n(const char *str)
 {
-	size_t	i;
+	ssize_t	i;
 
 	i = 0;
 	while (str[i] && str[i] != '\n')
@@ -26,8 +26,8 @@ long	ft_n(const char *str)
 
 char	*reading(char *buffer, size_t *index, char *line, size_t *size)
 {
-	size_t	res;
-	long	n;
+	ssize_t	res;
+	ssize_t	n;
 
 	res = 1;
 	while (res > 0 && line)

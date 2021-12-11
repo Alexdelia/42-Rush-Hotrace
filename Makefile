@@ -6,7 +6,7 @@
 #    By: adelille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/15 15:56:29 by adelille          #+#    #+#              #
-#    Updated: 2021/12/11 19:06:44 by adelille         ###   ########.fr        #
+#    Updated: 2021/12/11 21:37:57 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS	=	-Wall -Werror -Wextra
 #CFLAGS	+=	-O2
 CFLAGS	+=	-O3
 #CFLAGS	+=	-Ofast
-#CFLAGS	+=	-g3
+CFLAGS	+=	-g3
 #CFLAGS	+=	-pg
 #CFLAGS	+=	-fsanitize=address
 

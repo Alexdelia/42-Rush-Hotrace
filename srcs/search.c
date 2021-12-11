@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 18:50:27 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 18:47:32 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 21:19:02 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	find_in_list(t_item *list, char *line, size_t size)
 {
+	(void)size;
 	while (list && list->value)
 	{
 		if (ft_strcmp(list->keyword, line) == 0)
@@ -22,10 +23,11 @@ static void	find_in_list(t_item *list, char *line, size_t size)
 				print(line, size, NULL, 0);
 			else
 				print(NULL, 0, list->value, list->val_len);
-			break ;
+			return ;
 		}
 		list = list->next;
 	}
+	print(line, size, NULL, 0);
 }
 
 bool	search(void)
@@ -43,8 +45,6 @@ bool	search(void)
 		hash = get_hash(line);
 		tmp = &g_d.tab[hash];
 		find_in_list(tmp, line, size);
-		if (!tmp || !tmp->value)
-			print(line, size, NULL, 0);
 		free(line);
 		line = gnl(&size);
 	}

@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:52:50 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 18:29:51 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 20:38:59 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@
 # endif
 
 # ifndef TABLE_SIZE
-#  define TABLE_SIZE	100006901
+//#  define TABLE_SIZE	100006901
+#  define TABLE_SIZE	16777213
 # endif
 
-# define HASH			5381
+# define HASH			5031
 
 typedef struct s_item
 {
