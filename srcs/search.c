@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process.c                                          :+:      :+:    :+:   */
+/*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 18:50:27 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 22:45:52 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:48:05 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/hotrace.h"
 
-static size_t	ft_strcpy_n(char *line)
+bool	search(void)
 {
-	size_t	i;
-
-	i = 0;
-	while (g_d.stdin[g_d.i] && g_d.stdin[g_d.i] != '\n')
-	{
-		line[i] = g_d.stdin[g_d.i];
-		g_d.i++;
-		i++;
-	}
-	line[i] = '\0';
-	if (g_d.stdin[g_d.i])
-		g_d.i++;
-	return (i);
-}
-
-void	process(void)
-{
-	char	line[1024];
+	char	*line;
 	size_t	size;
 	size_t	hash;
 	t_item	*tmp;
 
-	while (g_d.stdin[g_d.i])
+	line = gnl(&size);
+	if (!line)
+		return (ft_pser("Error: Malloc failed\n"));
+	while (line)
 	{
-		size = ft_strcpy_n(line);
 		hash = get_hash(line);
 		tmp = &g_d.tab[hash];
 		while (tmp && tmp->value)
@@ -55,5 +40,8 @@ void	process(void)
 		}
 		if (!tmp || !tmp->value)
 			print(line, size, NULL, 0);
+		free(line);
+		line = gnl(&size);
 	}
+	return (true);
 }

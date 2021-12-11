@@ -6,13 +6,13 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:51:51 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/09 16:36:44 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:34:08 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/hotrace.h"
 
-static bool	read_big_stdin(ssize_t size)
+/*static bool	read_big_stdin(ssize_t size)
 {
 	char	*buffer;
 	ssize_t	ret;
@@ -48,4 +48,4 @@ bool	read_stdin(void)
 		if (!read_big_stdin(ret))
 			return (false);
 	return (true);
-}
+}*/

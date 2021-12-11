@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:32:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 17:01:38 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:42:20 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ long	ft_n(const char *str)
 	return (i);
 }
 
-char	*read_line(size_t *size)
+char	*gnl(size_t *size)
 {
 	static char	*buffer = NULL;
 	char		*line;
@@ -38,6 +38,7 @@ char	*read_line(size_t *size)
 		buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		if (!buffer)
 			return (NULL);
+		buffer[0] = '\0';
 	}
 	line = ft_strdup_n("", 0);
 	if (!line)
@@ -51,7 +52,7 @@ char	*read_line(size_t *size)
 		n = ft_n(buffer);
 		if (n > -1)
 		{
-			line = ft_strjoin_n_free(line, size, buffer, BUFFER_SIZE);
+			line = ft_strjoin_n_free(line, size, buffer, n);
 			if (!line)
 				return (NULL);
 			ft_strcpy_n(buffer, &buffer[n + 1], BUFFER_SIZE);
