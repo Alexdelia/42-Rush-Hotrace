@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 18:50:27 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 21:19:02 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 21:53:38 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	find_in_list(t_item *list, char *line, size_t size)
 {
-	(void)size;
 	while (list && list->value)
 	{
 		if (ft_strcmp(list->keyword, line) == 0)
