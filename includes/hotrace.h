@@ -25,7 +25,7 @@
 # endif
 
 # ifndef TABLE_SIZE
-#  define TABLE_SIZE	100000000
+#  define TABLE_SIZE	100006901
 # endif
 
 # define HASH			5381
