@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:37:12 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 21:49:43 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:01:27 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,21 @@ static bool	insert(t_item *tmp, char *keyword, char *value, t_len *l)
 	return (true);
 }
 
-static bool	add_item(char *keyword, char *value, t_len *l)
+static void	add_back_hash(size_t hash, t_hl **last)
+{
+	if (g_d.hl)
+	{
+		(*last)->next = new_hash(hash);
+		(*last) = (*last)->next;
+	}
+	else
+	{
+		g_d.hl = new_hash(hash);
+		(*last) = g_d.hl;
+	}
+}
+
+static bool	add_item(char *keyword, char *value, t_len *l, t_hl **last)
 {
 	t_item	*tmp;
 	size_t	hash;
@@ -52,7 +66,7 @@ static bool	add_item(char *keyword, char *value, t_len *l)
 		g_d.tab[hash].value = value;
 		g_d.tab[hash].key_len = l->key_len;
 		g_d.tab[hash].val_len = l->val_len;
-		add_back_hash(&g_d.hl, new_hash(hash));
+		add_back_hash(hash, last);
 	}
 	else
 	{
@@ -67,8 +81,10 @@ bool	parse(void)
 	char	*keyword;
 	char	*value;
 	t_len	l;
+	t_hl	*last;
 
 	g_d.hl = NULL;
+	last = NULL;
 	keyword = gnl(&l.key_len);
 	if (!keyword)
 		return (ft_pser("Error: Malloc failed\n"));
@@ -77,7 +93,7 @@ bool	parse(void)
 		value = gnl(&l.val_len);
 		if (!value)
 			return (ft_pser("Error: Malloc failed\n"));
-		if (!add_item(keyword, value, &l))
+		if (!add_item(keyword, value, &l, &last))
 			return (false);
 		keyword = gnl(&l.key_len);
 		if (!keyword)
