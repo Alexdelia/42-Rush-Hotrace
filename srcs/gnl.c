@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 16:32:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 20:51:57 by adelille         ###   ########.fr       */
+/*   Created: 2021/12/12 19:10:06 by adelille          #+#    #+#             */
+/*   Updated: 2021/12/12 19:21:19 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/hotrace.h"
 
-ssize_t	ft_n(const char *str)
+static ssize_t	ft_n(const char *str)
 {
 	ssize_t	i;
 
@@ -24,7 +24,16 @@ ssize_t	ft_n(const char *str)
 	return (i);
 }
 
-char	*reading(char *buffer, size_t *index, char *line, size_t *size)
+static char	*calc_size(char *line, size_t *size, size_t *index, const ssize_t n)
+{
+	if (!line)
+		return (NULL);
+	*index += n + 1;
+	*size = ft_strlen(line);
+	return (line);
+}
+
+static char	*reading(char *buffer, size_t *index, char *line, size_t *size)
 {
 	ssize_t	res;
 	ssize_t	n;
@@ -36,15 +45,13 @@ char	*reading(char *buffer, size_t *index, char *line, size_t *size)
 		if (n > -1)
 		{
 			line = ft_strjoin_n_free(line, size, &buffer[*index], n);
-			if (!line)
-				return (NULL);
-			*index += n + 1;
-			return (line);
+			return (calc_size(line, size, index, n));
 		}
 		else
 		{
 			line = ft_strjoin_n_free(line, size, &buffer[*index], BUFFER_SIZE);
 			res = read(0, buffer, BUFFER_SIZE);
+			buffer[res] = '\0';
 			*index = 0;
 		}
 	}
@@ -58,6 +65,7 @@ char	*gnl(size_t *size)
 	static char		*buffer = NULL;
 	static size_t	index = 0;
 	char			*line;
+	ssize_t			res;
 
 	if (BUFFER_SIZE <= 0)
 		return (NULL);
@@ -73,6 +81,9 @@ char	*gnl(size_t *size)
 		return (NULL);
 	*size = 0;
 	if (buffer[0] == '\0')
-		(void)!read(0, buffer, BUFFER_SIZE);
+	{
+		res = read(0, buffer, BUFFER_SIZE);
+		buffer[res] = '\0';
+	}
 	return (reading(buffer, &index, line, size));
 }

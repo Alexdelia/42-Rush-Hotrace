@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:52:50 by adelille          #+#    #+#             */
-/*   Updated: 2021/12/11 22:15:08 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/12 19:20:58 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ char	*ft_strjoin_n_free(char *s1, size_t *size1,
 			const char *s2, const size_t size2);
 int		ft_strcmp(const char *s1, const char *s2);
 bool	ft_pser(const char *str);
+size_t	ft_strlen(const char *str);
 
 #endif
